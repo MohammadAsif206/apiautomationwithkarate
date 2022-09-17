@@ -1,0 +1,57 @@
+<testsuite failures="0" name="src/test/java/com/api/automation/getrequest/evalresposne.feature" skipped="0" tests="3" time="1.621577">
+  <testcase classname="src.test.java.com.api.automation.getrequest.evalresposne" name="To test the get endpoint with JSON data" time="1.342269">
+    <system-out>* url 'http://localhost:9191' ............................................. passed
+Given path '/normal/webapi/all' ........................................... passed
+And header Accept = 'application/json' .................................... passed
+When method GET ........................................................... passed
+Then status 200 ........................................................... passed
+* print 'GET response is: ',response ...................................... passed
+And match response == ..................................................... passed</system-out>
+  </testcase>
+  <testcase classname="src.test.java.com.api.automation.getrequest.evalresposne" name="To test the get endpoint with XML data" time="0.188418">
+    <system-out>* url 'http://localhost:9191' ............................................. passed
+Given path '/normal/webapi/all' ........................................... passed
+And header Accept = 'application/json' .................................... passed
+When method GET ........................................................... passed
+Then status 200 ........................................................... passed
+* print 'GET response is: ',response ...................................... passed
+And match response == ..................................................... passed
+* url 'http://localhost:9191' ............................................. passed
+Given path '/normal/webapi/all' ........................................... passed
+And header Accept = 'application/xml' ..................................... passed
+When method GET ........................................................... passed
+Then status 200 ........................................................... passed
+And print 'Get response in xml is: ',response ............................. passed
+And match response == ..................................................... passed</system-out>
+  </testcase>
+  <testcase classname="src.test.java.com.api.automation.getrequest.evalresposne" name="To test the get endpoint with JSON data with a specific value" time="0.09089">
+    <system-out>* url 'http://localhost:9191' ............................................. passed
+Given path '/normal/webapi/all' ........................................... passed
+And header Accept = 'application/json' .................................... passed
+When method GET ........................................................... passed
+Then status 200 ........................................................... passed
+* print 'GET response is: ',response ...................................... passed
+And match response == ..................................................... passed
+* url 'http://localhost:9191' ............................................. passed
+Given path '/normal/webapi/all' ........................................... passed
+And header Accept = 'application/xml' ..................................... passed
+When method GET ........................................................... passed
+Then status 200 ........................................................... passed
+And print 'Get response in xml is: ',response ............................. passed
+And match response == ..................................................... passed
+* url 'http://localhost:9191' ............................................. passed
+Given path '/normal/webapi/all' ........................................... passed
+And header Accept = 'application/json' .................................... passed
+When method GET ........................................................... passed
+Then status 200 ........................................................... passed
+* print 'GET response is: ',response ...................................... passed
+And match response contains deep {"jobId":1} .............................. passed
+And match response contains deep {"project":[{"projectName":"Movie App"}]} . passed
+And match response[0].jobTitle == "Software Engg" ......................... passed
+And match response[0].project[0].projectName == 'Movie App' ............... passed
+And match response[0].project[0].technology[2] == 'Gradle' ................ passed
+And match response.[0].project[0].technology == "#[3]" .................... passed
+And match response[0].project[0].technology[*] == ["Kotlin","SQL Lite","Gradle"] . passed
+And match response[0].project[0].technology[*] contains ["SQL Lite","Gradle"] . passed</system-out>
+  </testcase>
+</testsuite>

@@ -1,0 +1,37 @@
+<testsuite failures="1" name="src/test/java/com/api/automation/getrequest/getRequest.feature" skipped="0" tests="2" time="1.135076">
+  <testcase classname="src.test.java.com.api.automation.getrequest.getRequest" name="To get all data from the application in JSON format" time="0.021816">
+    <failure message="getRequest.feature:11 - evaluation (js) failed: '/normal/webapi/all'getRequest.feature, javax.script.ScriptException: &lt;eval&gt;:1:20 Expected ; but found getRequest&#13;&#10;'/normal/webapi/all'getRequest.feature&#13;&#10;                    ^ in &lt;eval&gt; at line number 1 at column number 20&#10;stack trace: jdk.scripting.nashorn/jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:477)">Given url 'http://localhost:9191' ......................................... passed
+And print 'Hello world' ................................................... passed
+Given path '/normal/webapi/all'getRequest.feature ......................... failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: getRequest.feature:11 - evaluation (js) failed: '/normal/webapi/all'getRequest.feature, javax.script.ScriptException: &lt;eval&gt;:1:20 Expected ; but found getRequest&#13;
+'/normal/webapi/all'getRequest.feature&#13;
+                    ^ in &lt;eval&gt; at line number 1 at column number 20
+stack trace: jdk.scripting.nashorn/jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:477)&#13;
+	at ✽.Given path '/normal/webapi/all'getRequest.feature (getRequest.feature:11)&#13;
+
+When method GET # send the get request .................................... skipped
+Then status 200 # the status code response should be 200 .................. skipped</failure>
+  </testcase>
+  <testcase classname="src.test.java.com.api.automation.getrequest.getRequest" name="To get all data from the application in JSON format using path variable" time="1.11326">
+    <system-out>Given url 'http://localhost:9191' ......................................... passed
+And print 'Hello world' ................................................... passed
+Given path '/normal/webapi/all'getRequest.feature ......................... failed
+
+Stack Trace:
+com.intuit.karate.exception.KarateException: getRequest.feature:11 - evaluation (js) failed: '/normal/webapi/all'getRequest.feature, javax.script.ScriptException: &lt;eval&gt;:1:20 Expected ; but found getRequest&#13;
+'/normal/webapi/all'getRequest.feature&#13;
+                    ^ in &lt;eval&gt; at line number 1 at column number 20
+stack trace: jdk.scripting.nashorn/jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:477)&#13;
+	at ✽.Given path '/normal/webapi/all'getRequest.feature (getRequest.feature:11)&#13;
+
+When method GET # send the get request .................................... skipped
+Then status 200 # the status code response should be 200 .................. skipped
+Given url 'http://localhost:9191' ......................................... passed
+And print 'Hello world' ................................................... passed
+And path '/normal/webapi/all' ............................................. passed
+When method GET # send the get request .................................... passed
+Then status 200 # the status code response should be 200 .................. passed</system-out>
+  </testcase>
+</testsuite>

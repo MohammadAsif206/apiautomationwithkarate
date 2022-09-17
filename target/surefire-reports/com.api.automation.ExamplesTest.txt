@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.api.automation.ExamplesTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 5.16 s <<< FAILURE! - in com.api.automation.ExamplesTest
+testAll[2][1]  Time elapsed: 0.042 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: getRequest1.feature:4 - no step-definition method match found for: the application url 'www.google.com'
+
+testAll[2][2]  Time elapsed: 0.073 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: getRequest1.feature:11 - no step-definition method match found for: the application url 'www.google.com'
+
