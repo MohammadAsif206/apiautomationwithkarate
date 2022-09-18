@@ -12,7 +12,6 @@ public class ConnectionUtil {
         System.out.println("env is: "+url2);
 
         try{
-<<<<<<< HEAD
            // String url;// = "jdbc:postgresql://localhost:5432/postgres";
            // String user = "postgres"; String password = "new_password";
             String url = System.getenv("url");
@@ -21,8 +20,6 @@ public class ConnectionUtil {
 
            // String s = "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=new_password";
 
-=======
->>>>>>> 5070ecfcbcaba204ee8ca2e7dcd720a87ba4085e
             Connection connection = DriverManager.getConnection(url,user,password);
             System.out.println("Connection is successful. ");
             return connection;
