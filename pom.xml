@@ -20,7 +20,6 @@
 
 </properties>
 
-
     <dependencies>
         <dependency>
             <groupId>org.testng</groupId>
@@ -94,6 +93,6 @@
         <!--- end of karate project -->
 
     </dependencies>
-    
+
 
 </project>

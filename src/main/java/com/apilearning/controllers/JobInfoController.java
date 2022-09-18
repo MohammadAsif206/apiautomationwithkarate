@@ -1,7 +1,7 @@
 package com.apilearning.controllers;
 
 import com.apilearning.entities.JobInfo;
-import com.apilearning.services.JobInfoService;
+import com.apilearning.daos.services.JobInfoService;
 import com.google.gson.Gson;
 
 import io.javalin.http.Handler;
