@@ -1,4 +1,4 @@
-package com.apilearning.daos.services;
+package com.apilearning.services;
 
 import com.apilearning.entities.JobInfo;
 

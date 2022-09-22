@@ -3,6 +3,15 @@ package com.apilearning.daos;
 import com.apilearning.entities.JobInfo;
 import com.apilearning.utils.ConnectionUtil;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,52 +22,29 @@ public class JobInfoDAOImpl implements JobInfoDAO{
 
     @Override
     public JobInfo addJobDescription(JobInfo jobInfo) {
+        // Create JSONParser object
+        JSONParser jsonParser = new JSONParser();
         try(Connection connection = ConnectionUtil.createConnection()){
-//            String sql = "INSERT INTO JOBINFO (jobid,JOBDESCRIPTION,JOBTITLE) VALUES(?,?,?)";
-//            PreparedStatement ps = connection.prepareStatement(sql);
-//            ps.setInt(1,jobInfo.getJobId());
-//            ps.setString(2,jobInfo.getJobDescription());
-//            ps.setString(3,jobInfo.getJobTitle());
-//
-//
-//            ps.execute(sql);
-           // ResultSet rs = ps.getGeneratedKeys();
+            // parsing the contents of the JSON file
 
-//            rs.next();
-//            int key = rs.getInt("jobId");
-//            jobInfo.setJobId(key);
-//            connection.commit();
-//
-//            return jobInfo;
-//
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            return null;
-            Statement statement = connection.createStatement();
-            String q1 = "INSERT INTO JOBINFO (jobid,JOBDESCRIPTION,JOBTITLE) VALUES(4,'My Job','ENG')";
-            String q2 = "INSERT INTO JOBINFO (jobid,JOBDESCRIPTION,JOBTITLE) VALUES(5,'Your Job','ENG one')";
-            String q3 = "select * from jobinfo";
-            ResultSet rs = statement.executeQuery(q3);
-            int no_of_rows =0;
-            while (rs.next()){
-                no_of_rows++;
+            String sql = "INSERT INTO JOBINFO VALUES(default,?,?)";
+            PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+           // ps.setInt(1,jobInfo.getJobId());
+            ps.setString(1,jobInfo.getJobDescription());
+            ps.setString(2,jobInfo.getJobTitle());
+
+            ps.execute();
+            ResultSet rs = ps.getGeneratedKeys();
+            if(rs.next()){
+                int newId = rs.getInt(1);
+                jobInfo.setJobId(newId);
             }
-            System.out.println("Number of rows before commit statement: "+no_of_rows);
-            connection.setAutoCommit(false);
-            statement.executeQuery(q1);
-            statement.executeQuery(q2);
-            connection.commit();
-            rs = statement.executeQuery(q3);
-            int nom_of_rows = 0;
-            while (rs.next()){
-                nom_of_rows++;
-            }
-            System.out.println("Number of rows after commit statement: "+nom_of_rows);
             return jobInfo;
+
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+
         }
 
     }

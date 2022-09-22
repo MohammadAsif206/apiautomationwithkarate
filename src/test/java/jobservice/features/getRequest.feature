@@ -1,3 +1,4 @@
+@regression
 Feature: Test JobInfo Get endpoint
   Background: Set generic values
     Given url "http://localhost:7000"
@@ -22,5 +23,8 @@ Feature: Test JobInfo Get endpoint
     "jobDescription": "This is an old job with lower demand"
   }]
       """
+      # _ is called self variable , it is like self in Java
+      # validating with FUZZY MATCHER; with fuzzy matcher, we can do much more complex matching
+      And match response.[1].jobId == '#? _ == 2'
 
 
