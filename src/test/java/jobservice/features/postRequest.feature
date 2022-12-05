@@ -5,7 +5,7 @@ Feature: Test JobInfo Post endpoint
 
   Scenario: send post request to add a new jobinfo
     Given path '/addJobInfo'
-    And request {"jobId":0,"jobDescription":"Second Job Des added fro feature file","jobTitle":"KP2"}
+    And request {"jobId":0,"jobDescription":"Fourth Job Des added from feature file","jobTitle":"KP4"}
     And headers {Accept:'application/json',Content-Type:"application/json"}
     When method Post
     Then status 201

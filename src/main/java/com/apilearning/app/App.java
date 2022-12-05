@@ -1,14 +1,8 @@
 package com.apilearning.app;
 
 import com.apilearning.controllers.JobInfoController;
-import com.apilearning.daos.ExperienceDAO;
-import com.apilearning.daos.ExperienceDAOImpl;
-import com.apilearning.daos.JobInfoDAO;
-import com.apilearning.daos.JobInfoDAOImpl;
-import com.apilearning.services.ExperienceService;
-import com.apilearning.services.ExperienceServiceImpl;
-import com.apilearning.services.JobInfoService;
-import com.apilearning.services.JobInfoServiceImpl;
+import com.apilearning.daos.*;
+import com.apilearning.services.*;
 import io.javalin.Javalin;
 
 public class App {
@@ -23,12 +17,31 @@ public class App {
 
         ExperienceDAO experienceDAO = new ExperienceDAOImpl();
         ExperienceService experienceService = new ExperienceServiceImpl(experienceDAO);
-        JobInfoController jobInfoController = new JobInfoController(jobInfoService,experienceService);
+
+        ProjectDAO projectDAO = new ProjectDAOImpl();
+        ProjectService projectService = new ProjectServiceImpl(projectDAO);
+
+        TechnologyDAO technologyDAO = new TechnologyDAImpl();
+        TechnologyService technologyService = new TechnologyServiceImpl(technologyDAO);
+
+        JobPortalDAO jobPortalDAO = new JobPortalDAOImpl();
+        JobPortalService jobPortalService = new JobPortalServiceImpl(jobPortalDAO);
+        JobInfoController jobInfoController = new JobInfoController(jobInfoService,experienceService,
+                projectService,technologyService,jobPortalService);
 
         app.post("/addJobInfo", jobInfoController.addJobDescription);
         app.get("/retrieveJobInfo", jobInfoController.getAddJobInfoDescription);
 
         app.get("/retrieveExperience", jobInfoController.getExperience);
+
+        // Project
+        app.get("/retrieveProjects", jobInfoController.getProjects);
+
+        //Technology
+        app.get("/retrieveTecnologies",jobInfoController.getTechnology);
+
+        // JobPortal
+        app.get("/retrieveJobPortal",jobInfoController.getRetrieveJobPortal);
 
         app.start();
 
